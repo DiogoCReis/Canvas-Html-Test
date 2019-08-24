@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+</head>
+<body> 
+	<div style="margin: 50px"><canvas id="myCanvas" onclick="showCoords(event)" width="600" height="800" style="border:1px solid #000000;"> </canvas></div>
+	<p id="cor"></p>
+	<script>
+		var canvas = document.getElementById("myCanvas"),
+		    ctx = canvas.getContext("2d");
+
+		var background = new Image();
+		background.src = "board.jpg";
+
+		var coord = [];
+
+		background.onload = function(){
+		    ctx.drawImage(background,0,0,600,800);
+		    ctx.beginPath();
+			ctx.arc(95,50,40,0,2*Math.PI);
+			ctx.stroke();
+		}
+
+		function showCoords(event) {
+		  var x = event.clientX - 9;
+		  var y = event.clientY - 9;
+		  coord.push(x,y);
+		  document.getElementById("cor").innerHTML =  "<p>"+ coord +"</p>";
+		}
+
+		
+	</script> 
+</body>
+</html>
